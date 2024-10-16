@@ -749,17 +749,17 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel24" min="-2" pref="135" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                                  <Component id="DrDegree" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnPhD" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel20" min="-2" pref="135" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                                  <Component id="GDegree" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnGDegree" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel22" min="-2" pref="135" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                                  <Component id="PGDegree" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnPGDegree" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
@@ -833,21 +833,21 @@
                                       <Component id="GDLable" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="txtGD" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="jLabel20" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="GDegree" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnGDegree" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="PGDLable" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="txtPGD" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="jLabel22" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="PGDegree" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnPGDegree" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="PhDLable" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="txtPhD" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                                       <Component id="jLabel24" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="DrDegree" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnPhD" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -944,12 +944,12 @@
                     <Property name="text" type="java.lang.String" value="Graduation Degree"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="GDegree">
+                <Component class="javax.swing.JRadioButton" name="btnGDegree">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Yes / No"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GDegreeActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGDegreeActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="GDLable">
@@ -976,12 +976,12 @@
                     <Property name="text" type="java.lang.String" value="Postgraduation Degree"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="PGDegree">
+                <Component class="javax.swing.JRadioButton" name="btnPGDegree">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Yes / No"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PGDegreeActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPGDegreeActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="PGDLable">
@@ -1008,12 +1008,12 @@
                     <Property name="text" type="java.lang.String" value="Doctorate  Degree"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="DrDegree">
+                <Component class="javax.swing.JRadioButton" name="btnPhD">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Yes / No"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DrDegreeActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPhDActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="PhDLable">

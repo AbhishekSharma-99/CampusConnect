@@ -74,7 +74,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel3" min="-2" pref="268" max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" pref="289" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -107,11 +107,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="116" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="txtSearchStudentId" min="-2" pref="200" max="-2" attributes="0"/>
+                      <Component id="txtSearchStaffID" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnSearch" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Component id="btnStudentRecord" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnStaffRecord" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -121,9 +121,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="btnStudentRecord" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnStaffRecord" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnSearch" alignment="3" max="32767" attributes="0"/>
-                              <Component id="txtSearchStudentId" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtSearchStaffID" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
@@ -164,7 +164,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnStudentRecord">
+            <Component class="javax.swing.JButton" name="btnStaffRecord">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="0" type="rgb"/>
@@ -178,10 +178,10 @@
                 <Property name="text" type="java.lang.String" value="Staff&apos; s Record"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStudentRecordActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStaffRecordActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtSearchStudentId">
+            <Component class="javax.swing.JTextField" name="txtSearchStaffID">
             </Component>
           </SubComponents>
         </Container>
@@ -225,14 +225,14 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel18" min="-2" pref="135" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="txtBranch1" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtAcademic_Q" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jLabel19" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel14" min="-2" pref="135" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="txtLecturerID" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="txtStaffID" min="-2" pref="200" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" pref="137" max="-2" attributes="0"/>
                           </Group>
@@ -246,11 +246,9 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtDOJ" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                              <Component id="txtSalary" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="txtYear1" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="txtSalary" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="txtExperience" min="-2" pref="190" max="-2" attributes="0"/>
+                          <Component id="txtDOJ" min="-2" pref="190" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
@@ -260,28 +258,28 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel14" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="txtLecturerID" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jLabel16" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="txtDOJ" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel14" alignment="0" pref="30" max="32767" attributes="0"/>
+                          <Component id="txtStaffID" alignment="0" pref="30" max="32767" attributes="0"/>
+                          <Component id="jLabel16" alignment="0" pref="30" max="32767" attributes="0"/>
+                          <Component id="txtDOJ" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel15" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="txtDesignation" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txtDesignation" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jLabel17" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="txtSalary" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txtSalary" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel18" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="txtBranch1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txtAcademic_Q" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jLabel19" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="txtYear1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="txtExperience" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -290,7 +288,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txtYear1">
+            <Component class="javax.swing.JTextField" name="txtExperience">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel19">
               <Properties>
@@ -303,7 +301,7 @@
                 <Property name="text" type="java.lang.String" value="Experience"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtBranch1">
+            <Component class="javax.swing.JTextField" name="txtAcademic_Q">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
@@ -342,8 +340,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtSalary">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDOJ">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -355,7 +351,7 @@
                 <Property name="text" type="java.lang.String" value="Date of joining"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtLecturerID">
+            <Component class="javax.swing.JTextField" name="txtStaffID">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
@@ -366,6 +362,14 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Staff&apos;s id :"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="txtDOJ">
+              <Properties>
+                <Property name="dateFormatString" type="java.lang.String" value="dd, MM, yyyy"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[70, 17]"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -697,6 +701,7 @@
                               <Component id="jLabel11" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

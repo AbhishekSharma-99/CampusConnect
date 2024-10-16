@@ -5,7 +5,13 @@
  */
 package Staff;
 
+import Database.DatabaseConnection;
 import Home_page.Home;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +24,7 @@ public class Staff_record extends javax.swing.JFrame {
      */
     public Staff_record() {
         initComponents();
+        loadDataIntoStaffTable();
     }
 
     /**
@@ -32,18 +39,17 @@ public class Staff_record extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Student_Table = new javax.swing.JTable();
+        Staff_Table = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnReferesh = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
-        btnManageStudent = new javax.swing.JButton();
+        btnManageStaff = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setMinimumSize(new java.awt.Dimension(500, 20));
@@ -56,37 +62,48 @@ public class Staff_record extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(new javax.swing.border.MatteBorder(null));
 
-        Student_Table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Student_Table.setModel(new javax.swing.table.DefaultTableModel(
+        Staff_Table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Staff_Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Student's ID", "First Name", "Last Name", "DOB", "Gender", "Father's Name", "Occupation ( F )", "Mother's Name", "Occupation ( M )", "Address", "Contact No.", "Batch", "Branch", "Year"
+                "Staff's ID", "First Name", "Last Name", "DOB", "Gender", "Father's Name", "Mother's Name", "Address", "Contact No.", "Email", "Date of Joining", "Designation", "Salary", "Academic Qualification", "Experience"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        Student_Table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        Student_Table.setAutoscrolls(false);
-        Student_Table.setName(""); // NOI18N
-        jScrollPane2.setViewportView(Student_Table);
+        Staff_Table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        Staff_Table.setAutoscrolls(false);
+        Staff_Table.setName(""); // NOI18N
+        jScrollPane2.setViewportView(Staff_Table);
+        if (Staff_Table.getColumnModel().getColumnCount() > 0) {
+            Staff_Table.getColumnModel().getColumn(0).setMinWidth(70);
+            Staff_Table.getColumnModel().getColumn(5).setMinWidth(120);
+            Staff_Table.getColumnModel().getColumn(6).setMinWidth(120);
+            Staff_Table.getColumnModel().getColumn(7).setMinWidth(150);
+            Staff_Table.getColumnModel().getColumn(8).setMinWidth(100);
+            Staff_Table.getColumnModel().getColumn(9).setMinWidth(120);
+            Staff_Table.getColumnModel().getColumn(10).setMinWidth(100);
+            Staff_Table.getColumnModel().getColumn(11).setMinWidth(150);
+            Staff_Table.getColumnModel().getColumn(13).setMinWidth(120);
+        }
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -103,10 +120,15 @@ public class Staff_record extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 102, 102));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Refresh");
+        btnReferesh.setBackground(new java.awt.Color(0, 102, 102));
+        btnReferesh.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnReferesh.setForeground(new java.awt.Color(255, 255, 255));
+        btnReferesh.setText("Refresh");
+        btnReferesh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefereshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,7 +140,7 @@ public class Staff_record extends javax.swing.JFrame {
                 .addGap(106, 106, 106)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReferesh, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -129,7 +151,7 @@ public class Staff_record extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnReferesh, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -150,14 +172,14 @@ public class Staff_record extends javax.swing.JFrame {
             }
         });
 
-        btnManageStudent.setBackground(new java.awt.Color(0, 102, 102));
-        btnManageStudent.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnManageStudent.setForeground(new java.awt.Color(255, 255, 255));
-        btnManageStudent.setText("Manage Student");
-        btnManageStudent.setPreferredSize(new java.awt.Dimension(40, 60));
-        btnManageStudent.addActionListener(new java.awt.event.ActionListener() {
+        btnManageStaff.setBackground(new java.awt.Color(0, 102, 102));
+        btnManageStaff.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnManageStaff.setForeground(new java.awt.Color(255, 255, 255));
+        btnManageStaff.setText("Manage Staff");
+        btnManageStaff.setPreferredSize(new java.awt.Dimension(40, 60));
+        btnManageStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageStudentActionPerformed(evt);
+                btnManageStaffActionPerformed(evt);
             }
         });
 
@@ -169,7 +191,7 @@ public class Staff_record extends javax.swing.JFrame {
                 .addGap(95, 95, 95)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnManageStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96))
         );
         jPanel3Layout.setVerticalGroup(
@@ -178,7 +200,7 @@ public class Staff_record extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnManageStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnManageStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
 
@@ -226,7 +248,72 @@ public class Staff_record extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        String t1 = txtSearch.getText().trim();
+        if (t1.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please enter a Staff ID before searching.");
+            return;
+        }   
+
+        Connection conn = DatabaseConnection.getConnection();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;        
+        try {
+            // Create a prepared statement object
+            pstmt = conn.prepareStatement("SELECT * FROM Staff WHERE Staff_id = ?");
+
+            // Set the search value as a parameter
+            pstmt.setString(1, t1);
+
+            // Execute the query
+            rs = pstmt.executeQuery();
+
+            // Get the table model from the JTable
+            DefaultTableModel model = (DefaultTableModel) Staff_Table.getModel();
+
+            // Clear the table model
+            model.setRowCount(0);
+
+            // Iterate through the result set and add the data to the table model
+            while (rs.next()) {
+                model.addRow(new Object[] {
+                    rs.getString("Staff_ID"),
+                    rs.getString("FirstName"),
+                    rs.getString("LastName"),
+                    rs.getString("DOB"),
+                    rs.getString("Gender"),
+                    rs.getString("Father_Name"),
+                    rs.getString("Mother_Name"),
+                    rs.getString("Address"),
+                    rs.getString("Contact_no"),
+                    rs.getString("Email"),
+                    rs.getString("DOJ"),
+                    rs.getString("Designation"),
+                    rs.getDouble("Salary"),
+                    rs.getString("Academic_Q"),
+                    rs.getInt("Experience")                    
+                    // Add more columns as needed  
+                });
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error executing query: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                System.out.println("Error closing database resources: " + e.getMessage());
+            }
+        }
         
+        txtSearch.requestFocus();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -239,15 +326,68 @@ public class Staff_record extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnManageStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStudentActionPerformed
+    private void btnManageStaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageStaffActionPerformed
         // TODO add your handling code here:
         Manage_Staff ST_Frame = new Manage_Staff();
         ST_Frame.setVisible(true);
         ST_Frame.pack();
         ST_Frame.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_btnManageStudentActionPerformed
+    }//GEN-LAST:event_btnManageStaffActionPerformed
 
+    private void btnRefereshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefereshActionPerformed
+        // TODO add your handling code here:
+        loadDataIntoStaffTable();
+        txtSearch.requestFocus();
+        txtSearch.selectAll();
+    }//GEN-LAST:event_btnRefereshActionPerformed
+
+    private void loadDataIntoStaffTable() {
+    try {
+        Connection conn;
+        conn = DatabaseConnection.getConnection();
+
+        // Create a prepared statement
+        String query = "SELECT * FROM Staff";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+
+        ResultSet resultSet;
+        // Execute a query to retrieve the data
+        resultSet = pstmt.executeQuery();
+
+        DefaultTableModel model = (DefaultTableModel) Staff_Table.getModel();
+        // Clear the table model
+        model.setRowCount(0);
+
+        // Load the data into the table model
+        while (resultSet.next()) {
+            Object[] row = new Object[15];
+            row[0] = resultSet.getString("Staff_ID");
+            row[1] = resultSet.getString("FirstName");
+            row[2] = resultSet.getString("LastName");
+            row[3] = resultSet.getString("DOB");
+            row[4] = resultSet.getString("Gender");
+            row[5] = resultSet.getString("Father_Name");
+            row[6] = resultSet.getString("Mother_Name");
+            row[7] = resultSet.getString("Address");
+            row[8] = resultSet.getString("Contact_no");
+            row[9] = resultSet.getString("Email");
+            row[10] = resultSet.getString("DOJ");
+            row[11] = resultSet.getString("Designation");
+            row[12] = resultSet.getDouble("Salary");
+            row[13] = resultSet.getString("Academic_Q");
+            row[14] = resultSet.getInt("Experience");            
+            model.addRow(row);
+        }
+
+        // Close the result set, statement, and connection
+        resultSet.close();
+        pstmt.close();
+        conn.close();
+    } catch (SQLException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Error loading data into Staff table: " + e.getMessage());
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -284,11 +424,11 @@ public class Staff_record extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Student_Table;
+    private javax.swing.JTable Staff_Table;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnManageStudent;
+    private javax.swing.JButton btnManageStaff;
+    private javax.swing.JButton btnReferesh;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -614,7 +614,7 @@ public class Manage_Student extends javax.swing.JFrame {
         // Check if StudentID already exists in the database
         try {
             Connection conn = DatabaseConnection.getConnection();
-            PreparedStatement pstmt = null;
+            PreparedStatement pstmt;
             String query = "SELECT * FROM Student WHERE Student_ID = ?";
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, Integer.parseInt(txtStudentID.getText()));

@@ -88,15 +88,15 @@ public class Manage_Professor extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         txtExperience = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        GDegree = new javax.swing.JRadioButton();
+        btnGDegree = new javax.swing.JRadioButton();
         GDLable = new javax.swing.JLabel();
         txtGD = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        PGDegree = new javax.swing.JRadioButton();
+        btnPGDegree = new javax.swing.JRadioButton();
         PGDLable = new javax.swing.JLabel();
         txtPGD = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        DrDegree = new javax.swing.JRadioButton();
+        btnPhD = new javax.swing.JRadioButton();
         PhDLable = new javax.swing.JLabel();
         txtPhD = new javax.swing.JTextField();
         txtDOJ = new com.toedter.calendar.JDateChooser();
@@ -458,10 +458,10 @@ public class Manage_Professor extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Graduation Degree");
 
-        GDegree.setText("Yes / No");
-        GDegree.addActionListener(new java.awt.event.ActionListener() {
+        btnGDegree.setText("Yes / No");
+        btnGDegree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GDegreeActionPerformed(evt);
+                btnGDegreeActionPerformed(evt);
             }
         });
 
@@ -473,10 +473,10 @@ public class Manage_Professor extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Postgraduation Degree");
 
-        PGDegree.setText("Yes / No");
-        PGDegree.addActionListener(new java.awt.event.ActionListener() {
+        btnPGDegree.setText("Yes / No");
+        btnPGDegree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PGDegreeActionPerformed(evt);
+                btnPGDegreeActionPerformed(evt);
             }
         });
 
@@ -488,10 +488,10 @@ public class Manage_Professor extends javax.swing.JFrame {
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Doctorate  Degree");
 
-        DrDegree.setText("Yes / No");
-        DrDegree.addActionListener(new java.awt.event.ActionListener() {
+        btnPhD.setText("Yes / No");
+        btnPhD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DrDegreeActionPerformed(evt);
+                btnPhDActionPerformed(evt);
             }
         });
 
@@ -532,15 +532,15 @@ public class Manage_Professor extends javax.swing.JFrame {
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(36, 36, 36)
-                                        .addComponent(DrDegree))
+                                        .addComponent(btnPhD))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(36, 36, 36)
-                                        .addComponent(GDegree))
+                                        .addComponent(btnGDegree))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(36, 36, 36)
-                                        .addComponent(PGDegree)))
+                                        .addComponent(btnPGDegree)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(PGDLable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -597,19 +597,19 @@ public class Manage_Professor extends javax.swing.JFrame {
                             .addComponent(GDLable, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtGD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GDegree))
+                            .addComponent(btnGDegree))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(PGDLable, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPGD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PGDegree))
+                            .addComponent(btnPGDegree))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(PhDLable, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPhD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DrDegree))))
+                            .addComponent(btnPhD))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -706,21 +706,21 @@ public class Manage_Professor extends javax.swing.JFrame {
                     {
                         GDLable.setVisible(true);
                         txtGD.setVisible(true);
-                        GDegree.setSelected(true);
+                        btnGDegree.setSelected(true);
                         txtGD.setText(rs.getString("Uni_G"));                        
                     }
                      if(rs.getString("Post_Graduation_D").equalsIgnoreCase("Yes"))
                     {
                         PGDLable.setVisible(true);
                         txtPGD.setVisible(true);
-                        PGDegree.setSelected(true);
+                        btnPGDegree.setSelected(true);
                         txtPGD.setText(rs.getString("Uni_PG"));                        
                     }
                       if(rs.getString("PhD").equalsIgnoreCase("Yes"))
                     {
                         PhDLable.setVisible(true);
                         txtPhD.setVisible(true);
-                        DrDegree.setSelected(true);
+                        btnPhD.setSelected(true);
                         txtPhD.setText(rs.getString("Uni_PhD"));                        
                     }
                    
@@ -896,21 +896,21 @@ public class Manage_Professor extends javax.swing.JFrame {
         }
 
         // Check if Graduation Degree is empty
-        if (txtGD.getText().trim().isEmpty() && GDegree.isSelected()) {
+        if (txtGD.getText().trim().isEmpty() && btnGDegree.isSelected()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Graduation Degree");
             txtGD.requestFocus();
             return;
         }
 
         // Check if Post Graduation Degree is empty
-        if (txtPGD.getText().trim().isEmpty() && PGDegree.isSelected()) {
+        if (txtPGD.getText().trim().isEmpty() && btnPGDegree.isSelected()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Post Graduation Degree");
             txtPGD.requestFocus();
             return;
         }
 
         // Check if PhD is empty
-        if (txtPhD.getText().trim().isEmpty() && DrDegree.isSelected()) {
+        if (txtPhD.getText().trim().isEmpty() && btnPhD.isSelected()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the PhD");
             txtPhD.requestFocus();
             return;
@@ -960,7 +960,7 @@ public class Manage_Professor extends javax.swing.JFrame {
             pstmt.setString(16, graduationD);
             pstmt.setString(17, postGraduationD);
             pstmt.setString(18, phd);
-            if(GDegree.isSelected())
+            if(btnGDegree.isSelected())
             {
                 pstmt.setString(19, "Yes");
             }
@@ -968,7 +968,7 @@ public class Manage_Professor extends javax.swing.JFrame {
             {
                 pstmt.setString(19, "No");
             }
-            if(PGDegree.isSelected())
+            if(btnPGDegree.isSelected())
             {
                 pstmt.setString(20, "Yes");
             }
@@ -976,7 +976,7 @@ public class Manage_Professor extends javax.swing.JFrame {
             {
                 pstmt.setString(20, "No");
             }
-            if(DrDegree.isSelected())
+            if(btnPhD.isSelected())
             {
                 pstmt.setString(21, "Yes");
             }
@@ -1129,21 +1129,21 @@ public class Manage_Professor extends javax.swing.JFrame {
         }
 
         // Check if Graduation Degree is empty
-        if (txtGD.getText().trim().isEmpty() && GDegree.isSelected()) {
+        if (txtGD.getText().trim().isEmpty() && btnGDegree.isSelected()) {
             javax.swing .JOptionPane.showMessageDialog(null, "Please fill in the Graduation Degree");
             txtGD.requestFocus();
             return;
         }
 
         // Check if Post Graduation Degree is empty
-        if (txtPGD.getText().trim().isEmpty() && PGDegree.isSelected()) {
+        if (txtPGD.getText().trim().isEmpty() && btnPGDegree.isSelected()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Post Graduation Degree");
             txtPGD.requestFocus();
             return;
         }
 
         // Check if Doctoral Degree is empty
-        if (txtPhD.getText().trim().isEmpty() && DrDegree.isSelected()) {
+        if (txtPhD.getText().trim().isEmpty() && btnPhD.isSelected()) {
             javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Doctoral Degree");
             txtPhD.requestFocus();
             return;
@@ -1153,7 +1153,7 @@ public class Manage_Professor extends javax.swing.JFrame {
         try {
             Connection conn = DatabaseConnection.getConnection();
             PreparedStatement pstmt;
-            String query = "UPDATE Professor SET First_Name = ?, Last_Name = ?, Date_of_Birth = ?, Gender = ?, Father_Name = ?, Mother_Name = ?, Address = ?, Contact_No = ?, Email = ?, Date_of_Joining = ?, Designation = ?, Salary = ?, Academic_Qualification = ?, Experience = ?, Graduation_Degree = ?, Post_Graduation_Degree = ?, Doctoral_Degree = ? WHERE Professor_ID = ?";
+            String query = "UPDATE Professor SET FirstName = ?, LastName = ?, DOB = ?, Gender = ?, Father_Name = ?, Mother_Name = ?, Address = ?, Contact_No = ?, Email = ?, DOJ = ?, Designation = ?, Salary = ?, Academic_Q = ?, Experience = ?, Uni_G = ?, Uni_PG = ?, Uni_PhD = ? WHERE Professor_ID = ?";
             pstmt = conn.prepareStatement(query);
             pstmt.setString(1, txtFirstName.getText());
             pstmt.setString(2, txtLastName.getText());
@@ -1248,9 +1248,9 @@ public class Manage_Professor extends javax.swing.JFrame {
         txtPhD.setText("");
 
         // Unselect all radio buttons
-        GDegree.setSelected(false);
-        PGDegree.setSelected(false);
-        DrDegree.setSelected(false);
+        btnGDegree.setSelected(false);
+        btnPGDegree.setSelected(false);
+        btnPhD.setSelected(false);
 
         // Hide all optional fields
         GDLable.setVisible(false);
@@ -1274,7 +1274,7 @@ public class Manage_Professor extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void GDegreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GDegreeActionPerformed
+    private void btnGDegreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGDegreeActionPerformed
         // TODO add your handling code here:
         if(!txtGD.isVisible()){
             GDLable.setVisible(true);
@@ -1284,9 +1284,9 @@ public class Manage_Professor extends javax.swing.JFrame {
             GDLable.setVisible(false);
             txtGD.setVisible(false);
         }                
-    }//GEN-LAST:event_GDegreeActionPerformed
+    }//GEN-LAST:event_btnGDegreeActionPerformed
 
-    private void PGDegreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PGDegreeActionPerformed
+    private void btnPGDegreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPGDegreeActionPerformed
         // TODO add your handling code here:
         if(!txtPGD.isVisible()){
             PGDLable.setVisible(true);
@@ -1296,9 +1296,9 @@ public class Manage_Professor extends javax.swing.JFrame {
             PGDLable.setVisible(false);
             txtPGD.setVisible(false);
         }    
-    }//GEN-LAST:event_PGDegreeActionPerformed
+    }//GEN-LAST:event_btnPGDegreeActionPerformed
 
-    private void DrDegreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrDegreeActionPerformed
+    private void btnPhDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhDActionPerformed
         // TODO add your handling code here:
         if(!txtPhD.isVisible()){
             PhDLable.setVisible(true);
@@ -1308,7 +1308,7 @@ public class Manage_Professor extends javax.swing.JFrame {
             PhDLable.setVisible(false);
             txtPhD.setVisible(false);
         } 
-    }//GEN-LAST:event_DrDegreeActionPerformed
+    }//GEN-LAST:event_btnPhDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1346,16 +1346,16 @@ public class Manage_Professor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton DrDegree;
     private javax.swing.JLabel GDLable;
-    private javax.swing.JRadioButton GDegree;
     private javax.swing.JLabel PGDLable;
-    private javax.swing.JRadioButton PGDegree;
     private javax.swing.JLabel PhDLable;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JRadioButton btnGDegree;
+    private javax.swing.JRadioButton btnPGDegree;
+    private javax.swing.JRadioButton btnPhD;
     private javax.swing.JButton btnProfessorRecord;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;

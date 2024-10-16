@@ -5,7 +5,13 @@
  */
 package Staff;
 
+import Database.DatabaseConnection;
 import Home_page.Home;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -33,22 +39,22 @@ public class Manage_Staff extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
-        btnStudentRecord = new javax.swing.JButton();
-        txtSearchStudentId = new javax.swing.JTextField();
+        btnStaffRecord = new javax.swing.JButton();
+        txtSearchStaffID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        txtYear1 = new javax.swing.JTextField();
+        txtExperience = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        txtBranch1 = new javax.swing.JTextField();
+        txtAcademic_Q = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         txtDesignation = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtSalary = new javax.swing.JTextField();
-        txtDOJ = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txtLecturerID = new javax.swing.JTextField();
+        txtStaffID = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        txtDOJ = new com.toedter.calendar.JDateChooser();
         jPanel5 = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
@@ -100,13 +106,13 @@ public class Manage_Staff extends javax.swing.JFrame {
             }
         });
 
-        btnStudentRecord.setBackground(new java.awt.Color(0, 102, 102));
-        btnStudentRecord.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        btnStudentRecord.setForeground(new java.awt.Color(255, 255, 255));
-        btnStudentRecord.setText("Staff' s Record");
-        btnStudentRecord.addActionListener(new java.awt.event.ActionListener() {
+        btnStaffRecord.setBackground(new java.awt.Color(0, 102, 102));
+        btnStaffRecord.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
+        btnStaffRecord.setForeground(new java.awt.Color(255, 255, 255));
+        btnStaffRecord.setText("Staff' s Record");
+        btnStaffRecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStudentRecordActionPerformed(evt);
+                btnStaffRecordActionPerformed(evt);
             }
         });
 
@@ -118,11 +124,11 @@ public class Manage_Staff extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(txtSearchStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearchStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
-                .addComponent(btnStudentRecord)
+                .addComponent(btnStaffRecord)
                 .addGap(52, 52, 52))
         );
         jPanel2Layout.setVerticalGroup(
@@ -130,9 +136,9 @@ public class Manage_Staff extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnStudentRecord)
+                        .addComponent(btnStaffRecord)
                         .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtSearchStudentId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtSearchStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -173,6 +179,9 @@ public class Manage_Staff extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Staff's id :");
 
+        txtDOJ.setDateFormatString("dd, MM, yyyy");
+        txtDOJ.setPreferredSize(new java.awt.Dimension(70, 17));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -183,13 +192,13 @@ public class Manage_Staff extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(txtBranch1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAcademic_Q, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(txtLecturerID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -200,35 +209,34 @@ public class Manage_Staff extends javax.swing.JFrame {
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtDOJ, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtSalary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtYear1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtExperience, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDOJ, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLecturerID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDOJ, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(txtStaffID, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(txtDOJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtBranch1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAcademic_Q, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtYear1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtExperience, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -476,7 +484,8 @@ public class Manage_Staff extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -501,7 +510,7 @@ public class Manage_Staff extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -527,41 +536,499 @@ public class Manage_Staff extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        //javax.swing.JOptionPane.showMessageDialog(null, "Hello");
+        String t1 = txtSearchStaffID.getText().trim();
+        if (t1.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please enter a student ID before searching.");
+            return;
+        }
+        try {
+            int StaffID = Integer.parseInt(t1);          
+            Connection conn = DatabaseConnection.getConnection();
+            if (conn == null) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Error establishing database connection.");
+                return;
+            }
+
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+            try {
+                pstmt = conn.prepareStatement("SELECT * FROM Staff WHERE Staff_ID = ?");
+                pstmt.setInt(1, StaffID);
+                rs = pstmt.executeQuery();
+                //check if student exists or not 
+               if (rs.next()) {
+                    // Student exists
+                    javax.swing.JOptionPane.showMessageDialog(null, "Staff exists");
+
+                    // Retrieve and set values for each field
+                    txtStaffID.setText(String.valueOf(rs.getInt("Staff_ID")));
+                    txtFirstName.setText(rs.getString("FirstName"));
+                    txtLastName.setText(rs.getString("LastName"));
+                    txtDate.setDate(rs.getDate("DOB"));
+                    txtGender.setSelectedItem(rs.getString("Gender"));
+                    txtFatherName.setText(rs.getString("Father_Name"));                    
+                    txtMotherName.setText(rs.getString("Mother_Name"));                    
+                    txtAddress.setText(rs.getString("Address"));
+                    txtContectNo.setText(rs.getString("Contact_no"));
+                    txtEmail.setText(rs.getString("Email"));
+                    txtDOJ.setDate(rs.getDate("DOJ"));
+                    txtDesignation.setText(rs.getString("Designation"));
+                    txtSalary.setText(String.valueOf(rs.getDouble("Salary")));
+                    txtAcademic_Q.setText(rs.getString("Academic_Q"));
+                    txtExperience.setText(String.valueOf(rs.getInt("Experience")));
+                    
+                   
+                    
+
+                    javax.swing.JOptionPane.showMessageDialog(null, "all components working successfully");
+                } else {
+                    // Student does not exist
+                    javax.swing.JOptionPane.showMessageDialog(null, "Student does not exist");
+                }
+                
+            } catch (SQLException e) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Error executing query: " + e.getMessage());
+            } finally {
+                try {
+                    if (rs != null) {
+                        rs.close();
+                    }
+                    if (pstmt != null) {
+                        pstmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (Exception e) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Error closing resources: " + e.getMessage());
+                }
+            }
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Invalid student ID format. Please enter a valid integer.");
+        }
 
       
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnStudentRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentRecordActionPerformed
+    private void btnStaffRecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStaffRecordActionPerformed
         // TODO add your handling code here:
-//        Student_record st = new Student_record();
-//        st.setVisible(true);
-//        st.pack();
-//        st.setLocationRelativeTo(null);
-//
-//        this.dispose();
-    }//GEN-LAST:event_btnStudentRecordActionPerformed
+        Staff_record st = new Staff_record();
+        st.setVisible(true);
+        st.pack();
+        st.setLocationRelativeTo(null);
+
+        this.dispose();
+    }//GEN-LAST:event_btnStaffRecordActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        // Check if Staff ID is empty
+        if (txtStaffID.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Staff ID");
+            txtStaffID.requestFocus();
+            return;
+        }
 
+        // Check if Staff ID already exists in the database
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt;
+            String query = "SELECT * FROM Staff WHERE Staff_ID = ?";
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, Integer.parseInt(txtStaffID.getText()));
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Staff ID already exists. Please choose a different ID.");
+                txtStaffID.requestFocus();
+                return;
+            }
+        } catch (SQLException e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Error checking Staff ID: " + e.getMessage());
+            return;
+        }
+
+        // Check if First Name is empty
+        if (txtFirstName.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the First Name");
+            txtFirstName.requestFocus();
+            return;
+        }
+
+        // Check if Last Name is empty
+        if (txtLastName.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Last Name");
+            txtLastName.requestFocus();
+            return;
+        }
+
+        // Check if DOB is empty
+        if (txtDate.getDate() == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select the Date of Birth");
+            txtDate.requestFocus();
+            return;
+        }
+
+        // Check if Gender is empty
+        if (txtGender.getSelectedItem() == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select the Gender");
+            txtGender.requestFocus();
+            return;
+        }
+
+        // Check if Father Name is empty
+        if (txtFatherName.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Father's Name");
+            txtFatherName.requestFocus();
+            return;
+        }
+
+        // Check if Mother Name is empty
+        if (txtMotherName.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Mother's Name");
+            txtMotherName.requestFocus();
+            return;
+        }
+
+        // Check if Address is empty
+        if (txtAddress.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Address");
+            txtAddress.requestFocus();
+            return;
+        }
+
+        // Check if Contact No is empty, has exactly 10 digits, and contains only digits
+        if (txtContectNo.getText().trim().isEmpty() || txtContectNo.getText().trim().length() != 10 || !txtContectNo.getText().trim().matches("\\d+")) {
+            if (txtContectNo.getText().trim().isEmpty()) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Contact No");
+            } else if (txtContectNo.getText().trim().length() != 10) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Contact No must have exactly 10 digits");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "Contact No must contain only digits");
+            }
+            txtContectNo.requestFocus();
+            return;
+        }
+
+        // Check if Email is empty
+        if (txtEmail.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Email");
+            txtEmail.requestFocus();
+            return;
+        }
+
+        // Check if DOJ is empty
+        if (txtDOJ.getDate() == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select the Date of Joining");
+            txtDOJ.requestFocus();
+            return;
+        }
+
+        // Check if Designation is empty
+        if (txtDesignation.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Designation");
+            txtDesignation.requestFocus();
+            return;
+        }
+
+        // Check if Salary is empty
+        if (txtSalary.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Salary");
+            txtSalary.requestFocus();
+            return;
+        }
+
+        // Check if Academic Qualification is empty
+        if (txtAcademic_Q.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Academic Qualification");
+            txtAcademic_Q.requestFocus();
+            return;
+        }
+
+        // Check if Experience is empty
+        if (txtExperience.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Experience");
+            txtExperience.requestFocus();
+            return;
+        }
+        
+        // Get values from text fields
+        int StaffId = Integer.parseInt(txtStaffID.getText());
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        Date sqlDate = new Date(txtDate.getDate().getTime());
+        String gender = (String) txtGender.getSelectedItem();
+        String fatherName = txtFatherName.getText();
+        String motherName = txtMotherName.getText();
+        String address = txtAddress.getText();
+        String contactNo = txtContectNo.getText();
+        String email = txtEmail.getText();
+        Date doj = new Date(txtDOJ.getDate().getTime());
+        String designation = txtDesignation.getText();
+        double salary = Double.parseDouble(txtSalary.getText());
+        String academicQ = txtAcademic_Q.getText();
+        int experience = Integer.parseInt(txtExperience.getText());       
+
+        // Insert into the database
+        Connection conn = DatabaseConnection.getConnection();
+        PreparedStatement pstmt;
+        String query = "INSERT INTO Staff (Staff_ID, FirstName, LastName, DOB, Gender, Father_Name, Mother_Name, Address, Contact_no, Email, DOJ, Designation, Salary, Academic_Q, Experience) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, StaffId);
+            pstmt.setString(2, firstName);
+            pstmt.setString(3, lastName);
+            pstmt.setDate(4, sqlDate);
+            pstmt.setString(5, gender);
+            pstmt.setString(6, fatherName);
+            pstmt.setString(7, motherName);
+            pstmt.setString(8, address);
+            pstmt.setString(9, contactNo);
+            pstmt.setString(10, email);
+            pstmt.setDate(11, doj);
+            pstmt.setString(12, designation);
+            pstmt.setDouble(13, salary);
+            pstmt.setString(14, academicQ);
+            pstmt.setInt(15, experience);          
+            
+            // Execute the query
+            pstmt.executeUpdate();
+
+            // Show a success message
+            javax.swing.JOptionPane.showMessageDialog(null, "Staff added successfully!");
+        } catch (SQLException e) {
+            // Handle any SQL exceptions
+            javax.swing.JOptionPane.showMessageDialog(null, "Error adding Staff: " + e.getMessage());
+        }
        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        // Check if StudentID is empty
+        // Check if Staff ID is empty
+        if (txtSearchStaffID.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Staff ID to update");
+            txtSearchStaffID.requestFocus();
+            return;
+        }
+
+        // Check if Staff ID exists in the database
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt;
+            String query = "SELECT * FROM Staff WHERE Staff_ID = ?";
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, Integer.parseInt(txtSearchStaffID.getText()));
+            ResultSet rs = pstmt.executeQuery();
+            if (!rs.next()) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Staff ID does not exist. Please choose a different ID.");
+                txtSearchStaffID.requestFocus();
+                return;
+            }
+        } catch (SQLException e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Error checking Staff ID: " + e.getMessage());
+            return;
+        }
+
+        // Check if First Name is empty
+        if (txtFirstName.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the First Name");
+            txtFirstName.requestFocus();
+            return;
+        }
+
+        // Check if Last Name is empty
+        if (txtLastName.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Last Name");
+            txtLastName.requestFocus();
+            return;
+        }
+
+        // Check if DOB is empty
+        if (txtDate.getDate() == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select the Date of Birth");
+            txtDate.requestFocus();
+            return;
+        }
+
+        // Check if Gender is empty
+        if (txtGender.getSelectedItem() == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select the Gender");
+            txtGender.requestFocus();
+            return;
+        }
+
+        // Check if Father Name is empty
+        if (txtFatherName.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Father's Name");
+            txtFatherName.requestFocus();
+            return;
+        }
+
+        // Check if Mother Name is empty
+        if (txtMotherName.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Mother's Name");
+            txtMotherName.requestFocus();
+            return;
+        }
+
+        // Check if Address is empty
+        if (txtAddress.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Address");
+            txtAddress.requestFocus();
+            return;
+        }
+
+        // Check if Contact No is empty, has exactly 10 digits, and contains only digits
+        if (txtContectNo.getText().trim().isEmpty() || txtContectNo.getText().trim().length() != 10 || !txtContectNo.getText().trim().matches("\\d+")) {
+            if (txtContectNo.getText().trim().isEmpty()) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Contact No");
+            } else if (txtContectNo.getText().trim().length() != 10) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Contact No must have exactly 10 digits");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "Contact No must contain only digits");
+            }
+            txtContectNo.requestFocus();
+            return;
+        }
+
+        // Check if Email is empty
+        if (txtEmail.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Email");
+            txtEmail.requestFocus();
+            return;
+        }
+
+        // Check if DOJ is empty
+        if (txtDOJ.getDate() == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select the Date of Joining");
+            txtDOJ.requestFocus();
+            return;
+        }
+
+        // Check if Designation is empty
+        if (txtDesignation.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Designation");
+            txtDesignation.requestFocus();
+            return;
+        }
+
+        // Check if Salary is empty
+        if (txtSalary.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Salary");
+            txtSalary.requestFocus();
+            return;
+        }
+
+        // Check if Academic Qualification is empty
+        if (txtAcademic_Q.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Academic Qualification");
+            txtAcademic_Q.requestFocus();
+            return;
+        }
+
+        // Check if Experience is empty
+        if (txtExperience.getText().trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Experience");
+            txtExperience.requestFocus();
+            return;
+        }
        
+
+        // Update the Staff's information in the database
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt;
+            String query = "UPDATE Staff SET FirstName = ?, LastName = ?, DOB = ?, Gender = ?, Father_Name = ?, Mother_Name = ?, Address = ?, Contact_No = ?, Email = ?, DOJ = ?, Designation = ?, Salary = ?, Academic_Q = ?, Experience = ? WHERE Staff_ID = ?";
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, txtFirstName.getText());
+            pstmt.setString(2, txtLastName.getText());
+            pstmt.setDate(3, new Date(txtDate.getDate().getTime()));
+            pstmt.setString(4, txtGender.getSelectedItem().toString());
+            pstmt.setString(5, txtFatherName.getText());
+            pstmt.setString(6, txtMotherName.getText());
+            pstmt.setString(7, txtAddress.getText());
+            pstmt.setString(8, txtContectNo.getText());
+            pstmt.setString(9, txtEmail.getText());
+            pstmt.setDate(10, new Date(txtDOJ.getDate().getTime()));
+            pstmt.setString(11, txtDesignation.getText());
+            pstmt.setString(12, txtSalary.getText());
+            pstmt.setString(13, txtAcademic_Q.getText());
+            pstmt.setString(14, txtExperience.getText());            
+            pstmt.setInt(15, Integer.parseInt(txtSearchStaffID.getText()));
+            pstmt.executeUpdate();
+            javax.swing.JOptionPane.showMessageDialog(null, "Staff's information updated successfully");
+        } catch (SQLException e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Error updating Staff's information: " + e.getMessage());
+        }
+        btnClearActionPerformed(null);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        
+         // Check if Staff ID is empty
+        if (txtSearchStaffID.getText().trim().isEmpty ()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please fill in the Staff ID to delete");
+            txtSearchStaffID.requestFocus();
+            return;
+        }
+
+        // Check if Staff ID exists in the database
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement pstmt;
+            String query = "SELECT * FROM Professor WHERE Professor_ID = ?";
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, Integer.parseInt(txtSearchStaffID.getText()));
+            ResultSet rs = pstmt.executeQuery();
+            if (!rs.next()) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Staff ID does not exist. Please choose a different ID.");
+                txtSearchStaffID.requestFocus();
+                return;
+            }
+        } catch (SQLException e) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Error checking Staff ID: " + e.getMessage());
+            return;
+        }
+
+        // Confirm deletion
+        int confirm = javax.swing.JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this Staff?", "Delete Staff", javax.swing.JOptionPane.YES_NO_OPTION);
+        if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+            // Delete the Staff's information from the database
+            try {
+                Connection conn = DatabaseConnection.getConnection();
+                PreparedStatement pstmt;
+                String query = "DELETE FROM Staff WHERE Staff_ID = ?";
+                pstmt = conn.prepareStatement(query);
+                pstmt.setInt(1, Integer.parseInt(txtSearchStaffID.getText()));
+                pstmt.executeUpdate();
+                javax.swing.JOptionPane.showMessageDialog(null, "Staff deleted successfully");
+            } catch (SQLException e) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Error deleting Staff: " + e.getMessage());
+            }
+        }
+        btnClearActionPerformed(null);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
+        txtStaffID.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtDate.setDate(null);
+        txtGender.setSelectedItem(null);
+        txtFatherName.setText("");
+        txtMotherName.setText("");
+        txtAddress.setText("");
+        txtContectNo.setText("");
+        txtEmail.setText("");
+        txtDOJ.setDate(null);
+        txtDesignation.setText("");
+        txtSalary.setText("");
+        txtAcademic_Q.setText("");
+        txtExperience.setText("");
         
+        txtSearchStaffID.requestFocusInWindow();
+        txtSearchStaffID.selectAll();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -615,7 +1082,7 @@ public class Manage_Staff extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnStudentRecord;
+    private javax.swing.JButton btnStaffRecord;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -640,21 +1107,21 @@ public class Manage_Staff extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtAcademic_Q;
     private javax.swing.JTextArea txtAddress;
-    private javax.swing.JTextField txtBranch1;
     private javax.swing.JTextField txtContectNo;
-    private javax.swing.JTextField txtDOJ;
+    private com.toedter.calendar.JDateChooser txtDOJ;
     private com.toedter.calendar.JDateChooser txtDate;
     private javax.swing.JTextField txtDesignation;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtExperience;
     private javax.swing.JTextField txtFatherName;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JComboBox txtGender;
     private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtLecturerID;
     private javax.swing.JTextField txtMotherName;
     private javax.swing.JTextField txtSalary;
-    private javax.swing.JTextField txtSearchStudentId;
-    private javax.swing.JTextField txtYear1;
+    private javax.swing.JTextField txtSearchStaffID;
+    private javax.swing.JTextField txtStaffID;
     // End of variables declaration//GEN-END:variables
 }
