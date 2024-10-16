@@ -3,7 +3,7 @@ College Manager is a Java-based desktop application developed to help colleges m
 
 Features
   * Student Management: Add, update, delete, and search for student records.
-  * Teacher & Staff Management: Manage the data of teachers and staff, including role assignments and updates.
+  * Lecturer & Staff Management: Manage the data of teachers and staff, including role assignments and updates.
   * User Interface: Developed using Java Swing, offering a clean and responsive UI for users.
   * Database Connectivity: Uses JDBC for efficient interaction with the underlying database.
   * Modular Design: Follows the MVC (Model-View-Controller) architecture for clean separation of concerns.
